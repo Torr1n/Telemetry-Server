@@ -1,11 +1,14 @@
 import express = require("express")
+import helloworld = require("./routes/helloworld")
+import bigfile = require("./routes/bigfile")
+
 const app = express();
 const port = 3000; 
 
-// Hello World
-app.get( "/", ( req, res ) => {
-    res.send( "Hello world" );
-} );
+// routes
+app.use('/api/helloworld', helloworld);
+app.use('/api/big-file', bigfile);
+
 
 const start = () => {
       app.listen(port, () =>
