@@ -5,8 +5,8 @@ const fs = require('fs');
 const bigfile = express.Router()
 
 bigfile.get('/', (req: Request, res: Response) => {
-    const src = fs.createReadStream('src/big.file');
-    src.pipe(res);
+    const stream = fs.createWriteStream
+
   })
 
   export = bigfile;
