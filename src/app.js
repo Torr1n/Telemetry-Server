@@ -14,7 +14,7 @@ var port = 3000;
 app.use('/api/helloworld', helloworld);
 app.use('/api/big-file', bigfile);
 app.use("/api/v1/healthcheck", healthCheck);
-app.use("/api/v1/upload", multerUpload.single("test"), upload);
+app.use("/api/v1/upload", upload);
 app.use("/api/v1/download", download);
 var start = function () {
     app.listen(port, function () {
