@@ -1,8 +1,7 @@
 import express = require("express")
 import helloworld = require("./routes/helloworld")
 import bigfile = require("./routes/bigfile")
-import multer = require("multer")
-const multerUpload = multer({dest:'./uploads/'});
+const fileUpload = require('express-fileupload');
 var healthCheck = require("./routes/healthcheck");
 var upload = require("./routes/upload");
 var download = require("./routes/download");
@@ -10,6 +9,9 @@ var download = require("./routes/download");
 
 const app = express();
 const port = 3000; 
+
+//middleware
+app.use(fileUpload());
 
 // routes
 app.use('/api/helloworld', helloworld);
