@@ -5,7 +5,9 @@ const upload = express.Router()
 var fs = require("fs");
 
 upload.post('/', (req: Request, res: Response) => {
-    var stream = fs.createReadStream(req.body);
+    console.log(req.body);
+    console.log(req.files);
+    var stream = fs.createReadStream(req.files);
     stream.pipe(res);
 })
 
