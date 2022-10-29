@@ -2,7 +2,7 @@ import express = require("express")
 import helloworld = require("./routes/helloworld")
 import bigfile = require("./routes/bigfile")
 import multer = require("multer")
-const multerUpload = multer();
+const multerUpload = multer({dest:'./uploads/'});
 var healthCheck = require("./routes/healthcheck");
 var upload = require("./routes/upload");
 var download = require("./routes/download");
@@ -15,7 +15,7 @@ const port = 3000;
 app.use('/api/helloworld', helloworld);
 app.use('/api/big-file', bigfile);
 app.use("/api/v1/healthcheck", healthCheck);
-app.use("/api/v1/upload", multerUpload.none(), upload)
+app.use("/api/v1/upload", multerUpload.single("test"), upload)
 app.use("/api/v1/download", download)
 
 
