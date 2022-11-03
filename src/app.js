@@ -3,14 +3,12 @@ exports.__esModule = true;
 var express = require("express");
 var helloworld = require("./routes/helloworld");
 var bigfile = require("./routes/bigfile");
-var fileUpload = require('express-fileupload');
 var healthCheck = require("./routes/healthcheck");
 var upload = require("./routes/upload");
 var download = require("./routes/download");
 var app = express();
 var port = 3000;
-//middleware
-app.use(fileUpload());
+
 // routes
 app.use('/api/helloworld', helloworld);
 app.use('/api/big-file', bigfile);

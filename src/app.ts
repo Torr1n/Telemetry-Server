@@ -1,7 +1,8 @@
 import express = require("express")
 import helloworld = require("./routes/helloworld")
 import bigfile = require("./routes/bigfile")
-const fileUpload = require('express-fileupload');
+const busboy = require('connect-busboy');
+
 var healthCheck = require("./routes/healthcheck");
 var upload = require("./routes/upload");
 var download = require("./routes/download");
@@ -11,7 +12,7 @@ const app = express();
 const port = 3000; 
 
 //middleware
-app.use(fileUpload());
+app.use(busboy());;
 
 // routes
 app.use('/api/helloworld', helloworld);
