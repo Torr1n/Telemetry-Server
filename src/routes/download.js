@@ -2,18 +2,10 @@
 var express = require('express');
 var download = express.Router();
 var fs = require("fs");
-download.get('/', function (req, res) {
-    var data = "";
-    var readerStream = fs.createReadStream("./uploads/data.csv");
-    readerStream.setEncoding("UTF8");
-    readerStream.on("data", function (chunk) {
-        data += chunk;
-    });
-    readerStream.on("end", function () {
+var cachingDownloader = function (cache) {
+    return download.get('/', function (req, res) {
+        var data = cache.data;
         res.status(200).json({ status: "file read", data: data });
     });
-    readerStream.on("error", function (err) {
-        res.status(400).json({ status: "could not read file" });
-    });
-});
-module.exports = download;
+};
+module.exports = cachingDownloader;

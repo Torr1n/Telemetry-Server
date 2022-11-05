@@ -3,21 +3,17 @@ var busboy = require("busboy");
 var express = require('express');
 var upload = express.Router();
 var fs = require("fs");
-upload.post('/', function (req, res) {
-    var bb = busboy({ headers: req.headers });
-    if (fs.existsSync('./uploads/data.csv')) {
-        bb.on("file", function (name, file, info) {
-            file.pipe(fs.createWriteStream("./uploads/data.csv", { flags: 'a' }));
+var cachingUploader = function (cache) {
+    return upload.post('/', function (req, res) {
+        if (!fs.existsSync('./uploads/data.csv')) {
+            fs.createFileSync('./uploads/data.csv');
+        }
+        fs.appendFileSync("./uploads/data.csv", req.body.data);
+        req.body.data.split("\n").forEach(function (row) {
+            cache.data.push(row);
         });
-    }
-    else {
-        bb.on("file", function (name, file, info) {
-            file.pipe(fs.createWriteStream("./uploads/data.csv"));
-        });
-    }
-    bb.on("close", function () {
-        res.status(200).json({ status: "file recieved" });
+        console.log(cache);
+        res.sendStatus(200);
     });
-    req.pipe(bb);
-});
-module.exports = upload;
+};
+module.exports = cachingUploader;
