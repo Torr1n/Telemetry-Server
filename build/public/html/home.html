@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Home</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script src="/public/js/home.js"></script>
+    <link rel="stylesheet" href="/public/css/home.css"></script>
+</head>
+<body>
+    <div id="range-selector">
+        <div class="range-selector-row" id="absolute">
+            Absolute: 
+            <div>
+                <input type="datetime-local" />-<input type="datetime-local" />
+            </div>
+        </div>
+        <div class="range-selector-row" id="relative">
+            Relative: 
+            <div id="relative-row"> 
+                <div id="1-minute">1m</div>
+                <div id="5-minute">5m</div>
+                <div id="30-minute">30m</div>
+                <div id="1-hour">1h</div>
+                <div id="3-hour">3h</div>
+            </div>
+        </div>
+        <div class="range-selector-row">
+            Filters: 
+            <input type="text" id="filters" />
+        </div>
+        <div class="range-selector-row">
+            Alarms: 
+            <input type="text" id="alarms" />
+        </div>
+        <div class="range-selector-row">
+            Super-impositions: 
+            <input type="text" id="impositions" />
+        </div>
+        <div class="apply" onclick="apply()">
+            Apply
+        </div>
+    </div>
+    <div id="charts"></div>
+</body>
+</html>

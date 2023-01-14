@@ -16,6 +16,7 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*"],
+  "assets":["src/public/**/*"],
   "exclude": ["node_modules"]
 }
 
