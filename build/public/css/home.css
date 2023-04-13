@@ -157,3 +157,34 @@ html, body {
 .apply:hover {
     background-color: rgb(43, 110, 182);
 }
+
+
+
+.stop {
+    background-color: red;
+    color: white;
+    border-radius: 2px;
+    text-align: center;
+    padding: 10px;
+    margin: 10px 5px;
+    cursor: pointer;
+}
+
+.start {
+    background-color: rgb(60, 130, 206);
+    color: white;
+    border-radius: 2px;
+    text-align: center;
+    padding: 10px;
+    margin: 10px 5px;
+    cursor: pointer;
+}
+
+.start:hover {
+    background-color: rgb(43, 110, 182);
+}
+
+.stop:hover {
+    background-color: darkred;
+}
+

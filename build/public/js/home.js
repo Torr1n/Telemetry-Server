@@ -6,6 +6,7 @@ let getQueryParams = () => {
   });
 }
 
+
 let getInitialData = async (runId) => {
   let response = await fetch(`/api/v1/download?runId=${runId}`);
   return await response.json();
@@ -289,4 +290,18 @@ let addImpose = (metric) => {
     }
     document.body.removeChild(done);
   });
+}
+
+
+function testChange() {
+  let myDiv = document.getElementById("start");
+  if (myDiv.className === "stop") {
+    myDiv.classList.remove("stop");
+    myDiv.className = "start";
+    myDiv.textContent = "Start";
+  } else {
+    myDiv.classList.remove("start");
+    myDiv.className = "stop";
+    myDiv.textContent = "Stop";
+  }
 }
